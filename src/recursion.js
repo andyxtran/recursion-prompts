@@ -137,6 +137,10 @@ let divide = (x, y) => {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 let gcd = (x, y) => {
+  if (x <= 0 || y <= 0) return null;
+  if (x === 0 && y === 0) return 0;
+  if (x % y === 0) return y;
+  return gcd(y, x % y);
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -144,6 +148,9 @@ let gcd = (x, y) => {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 let compareStr = (str1, str2) => {
+  if (str1.length === 0 && str2.length === 0) return true;
+  if (str1[0] === str2[0]) return compareStr(str1.slice(1), str2.slice(1));
+  else return false;
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
